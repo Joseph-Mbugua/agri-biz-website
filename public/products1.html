@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Products</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="filter-container">
+      <select id="category-filter">
+        <option value="all">All</option>
+        <option value="seeds">Seeds</option>
+        <option value="equipment">Equipment</option>
+        <option value="fertilizers">Fertilizers</option>
+        <option value="pesticides">Pesticides</option>
+      </select>
+      <input type="text" id="search-bar" placeholder="Search products...">
+    </div>
+
+    <div id="product-list">
+      <!-- Products will be populated dynamically -->
+    </div>
+    
+          <!-- Cart Modal -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeCartModal()">&times;</span>
+      <h2>Cart</h2>
+      <div id="cart-items"></div>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+    <button id="logout-button" onclick="logout()">Logout</button>
+
+  </main>
+  <footer class="footer">
+    <hr />
+    <br>
+
+    <p><span>Developed by Joseph Mbugua &copy; 2024. All rights reserved.</span></p>
+  </footer>
+
+  <script src="firebase.js"></script>
+  <script src="script.js"></script>
+  <script src="logout.js"></script>
+</body>
+</html>

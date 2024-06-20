@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Slideshow</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Styles for the whole page */
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Styles for slideshow */
+    .slideshow-container {
+      max-width: 800px;
+      position: relative;
+    }
+
+    .mySlides {
+      display: none;
+      text-align: center;
+    }
+
+    .slideshow-image {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .product-details {
+      margin-top: 10px;
+    }
+
+    .button-container {
+      margin-top: 10px;
+    }
+
+    .button-container button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button-container button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<div>
+    <header>
+        <h1>Agri-Inputs Marketplace</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+          </ul>
+        </nav>
+      </header>
+</div>
+<div class="slideshow-container">
+  <!-- Product Slides -->
+  <div class="mySlides">
+    <img src="download (2).jpeg" alt="Product 1" class="slideshow-image" style="width: 700px; height: 400px;">
+    <div class="product-details">
+      <h2>Product 1</h2>
+      <p>Price: $50</p>
+      <p>Rating: 4.5/5</p>
+    </div>
+    <div class="button-container">
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="download (3).jpeg" alt="Product 2" class="slideshow-image" style="width: 700px; height: 400px;">
+    <div class="product-details">
+      <h2>Product 2</h2>
+      <p>Price: $80</p>
+      <p>Rating: 4.8/5</p>
+    </div>
+    <div class="button-container">
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="download (4).jpeg" alt="Product 3" class="slideshow-image" style="width: 700px; height: 400px;">
+    <div class="product-details">
+      <h2>Product 3</h2>
+      <p>Price: $120</p>
+      <p>Rating: 4.3/5</p>
+    </div>
+    <div class="button-container">
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="download (5).jpeg" alt="Product 4" class="slideshow-image" style="width: 700px; height: 400px;">
+    <div class="product-details">
+      <h2>Product 4</h2>
+      <p>Price: $90</p>
+      <p>Rating: 4.6/5</p>
+    </div>
+    <div class="button-container">
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="download (6).jpeg" alt="Product 5" class="slideshow-image" style="width: 700px; height: 400px;">
+    <div class="product-details">
+      <h2>Product 5</h2>
+      <p>Price: $110</p>
+      <p>Rating: 4.2/5</p>
+    </div>
+    <div class="button-container">
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="download (7).jpeg" alt="Product 6" class="slideshow-image" style="width: 700px; height: 400px;">
+    <div class="product-details">
+      <h2>Product 6</h2>
+      <p>Price: $100</p>
+      <p>Rating: 4.7/5</p>
+    </div>
+    <div class="button-container">
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="download.jpeg" alt="Product 7" class="slideshow-image" style="width: 700px; height: 400px;">
+    <div class="product-details">
+      <h2>Product 7</h2>
+      <p>Price: $95</p>
+      <p>Rating: 4.4/5</p>
+    </div>
+    <div class="button-container">
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Slideshow logic
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var slides = document.getElementsByClassName("mySlides");
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 3000); // Change image every 3 seconds
+  }
+
+  // Function for Buy Now button
+  function buyNow() {
+    alert("Product added to cart!");
+    // Implement your logic for adding product to cart
+  }
+</script>
+
+</body>
+</html>

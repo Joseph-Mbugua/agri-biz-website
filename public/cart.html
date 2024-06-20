@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Cart</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+        <li><a href="#" id="manage-account-link" style="display: none;" onclick="showManageAccount()">Manage Account</a></li>
+        <li><a href="#" id="logout-link" style="display: none;" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="cart-container" class="cart-container"></div>
+    <div id="total-container" class="total-container"></div>
+  </main>
+  <footer class="footer">
+    <hr />
+    <br>
+    <p><span>Developed by Joseph Mbugua &copy; 2024. All rights reserved.</span></p>
+  </footer>
+
+  <script>
+    // Function to render cart items
+    function renderCart() {
+      const cartContainer = document.getElementById('cart-container');
+      const totalContainer = document.getElementById('total-container');
+      cartContainer.innerHTML = ''; // Clear previous content
+      totalContainer.innerHTML = ''; // Clear previous content
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let total = 0;
+
+      cart.forEach((product, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        const productImage = document.createElement('img');
+        productImage.src = product.imageUrl;
+        productImage.alt = product.name;
+
+        const productName = document.createElement('h2');
+        productName.textContent = product.name;
+
+        const productDescription = document.createElement('p');
+        productDescription.textContent = product.description;
+
+        const productPrice = document.createElement('p');
+        productPrice.textContent = `Price: $${product.price}`;
+
+        total += product.price;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.addEventListener('click', () => {
+          removeFromCart(index);
+        });
+
+        cartItem.appendChild(productImage);
+        cartItem.appendChild(productName);
+        cartItem.appendChild(productDescription);
+        cartItem.appendChild(productPrice);
+        cartItem.appendChild(removeBtn);
+
+        cartContainer.appendChild(cartItem);
+      });
+
+      const totalPrice = document.createElement('h2');
+      totalPrice.textContent = `Total: $${total.toFixed(2)}`;
+      totalContainer.appendChild(totalPrice);
+
+      // Update cart count
+      updateCartCount();
+    }
+
+    // Function to remove item from cart
+    function removeFromCart(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    // Function to update cart count
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

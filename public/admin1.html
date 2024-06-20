@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="admin-container">
+      <div class="form-container">
+        <h2>Add New Product</h2>
+        <form id="add-product-form" onsubmit="add-product-form">
+          <label for="product-name">Product Name</label>
+          <input type="text" id="product-name" required><br>
+
+          <label for="product-description">Description</label>
+          <textarea id="product-description" required></textarea><br>
+
+          <label for="product-price">Price</label>
+          <input type="number" id="product-price" required><br>
+
+          <label for="product-category">Category</label>
+          <select id="product-category" required>
+            <option value="seeds">Seeds</option>
+            <option value="equipment">Equipment</option>
+            <option value="fertilizers">Fertilizers</option>
+            <option value="pesticides">Pesticides</option>
+          </select><br>
+
+          <label for="product-image">Product Image</label>
+          <input type="file" id="product-image" required><br>
+
+          <button type="submit">Add Product</button>
+        </form>
+      </div>
+
+      <div class="user-container">
+        <h2>Users</h2>
+        <ul id="user-list">
+          <!-- User list will be populated dynamically -->
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <hr />
+    <br>
+    <p><span>Developed by Joseph Mbugua &copy; 2024. All rights reserved.</span></p>
+  </footer>
+
+  <script src="firebase.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
